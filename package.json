@@ -3,6 +3,18 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/reactivous.es.js",
+      "require": "./dist/reactivous.umd.js"
+    }
+  },
+  "main": "./dist/reactivous.umd.js",
+  "module": "./dist/reactivous.es.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
