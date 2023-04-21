@@ -16,6 +16,14 @@ export default defineConfig((configEnv) => ({
       include: ['src/lib/'],
     }),
   ],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.ts',
+    // you might want to disable it, if you don't have tests that rely on CSS
+    // since parsing CSS is slow
+    css: false,
+  },
   build: {
     lib: {
       entry: resolve('src', 'lib/index.ts'),
