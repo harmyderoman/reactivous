@@ -17,7 +17,7 @@ describe('useObjectsArray', () => {
     const { result } = renderHook(() => useObjectsArray(INIT_STATE))
   
     act(() => {
-      result.current.deleteItemByIndex(0)
+      result.current.remove(0)
     })
     expect(result.current.state.length).toBe(0)
   })
@@ -27,7 +27,7 @@ describe('useObjectsArray', () => {
     const { result } = renderHook(() => useObjectsArray(INIT_STATE))
   
     act(() => {
-      result.current.updateItemByIndex(0, { 1: 'b'})
+      result.current.update(0, { 1: 'b'})
     })
     expect(result.current.state[0][1]).toBe('b')
   })
@@ -37,7 +37,7 @@ describe('useObjectsArray', () => {
     const { result } = renderHook(() => useObjectsArray(INIT_STATE))
   
     act(() => {
-      result.current.deleteItemsByProperty({id: 'a'})
+      result.current.removeAll({id: 'a'})
     })
     expect(result.current.state.length).toBe(0)
   })
@@ -47,7 +47,7 @@ describe('useObjectsArray', () => {
     const { result } = renderHook(() => useObjectsArray(INIT_STATE))
   
     act(() => {
-      result.current.updateItemsByProperty({id: 'a'}, { value: 1 } )
+      result.current.updateAll({id: 'a'}, { value: 1 } )
     })
     expect(result.current.state[0].value).toBe(1)
   })

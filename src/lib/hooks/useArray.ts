@@ -9,15 +9,15 @@ export function useArray<T>(
     setState((state) => [...state, newItem])
   }
 
-  const deleteItemByIndex = (index: number) => {
+  const remove = (index: number) => {
+    const removed = state[index]
     setState((state) => state.filter((_, i) => i != index))
+    return removed
   }
 
-  const updateItemByIndex = (index: number, newItem: Partial<T>) => {
+  const update = (index: number, newItem: T) => {
     setState((state) => {
-      const updatedItem = Object.assign({}, state[index], newItem)
-
-      return [...state.slice(0, index), updatedItem, ...state.slice(index + 1)]
+      return [...state.slice(0, index), newItem, ...state.slice(index + 1)]
     })
   }
 
@@ -25,7 +25,7 @@ export function useArray<T>(
     state,
     push,
     setState,
-    deleteItemByIndex,
-    updateItemByIndex,
+    remove,
+    update,
   }
 }

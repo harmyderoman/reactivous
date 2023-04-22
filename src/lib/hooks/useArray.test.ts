@@ -16,7 +16,7 @@ describe('useArray', () => {
     const { result } = renderHook(() => useArray(INIT_STATE))
   
     act(() => {
-      result.current.deleteItemByIndex(0)
+      result.current.remove(0)
     })
     expect(result.current.state.length).toBe(0)
   })
@@ -26,7 +26,7 @@ describe('useArray', () => {
     const { result } = renderHook(() => useArray(INIT_STATE))
   
     act(() => {
-      result.current.updateItemByIndex(0, { 1: 'b'})
+      result.current.update(0, { 1: 'b'})
     })
     expect(result.current.state[0][1]).toBe('b')
   })

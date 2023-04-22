@@ -10,13 +10,16 @@ export function useObjectsArray<T extends ArrayItem>(
 
   const array = useArray<T>(initialState)
 
-  const deleteItemsByProperty = (prop: Partial<T>) => {
+  const removeAll = (prop: Partial<T>) => {
     const key = Object.keys(prop)[0]
 
+    const removed = array.state.filter(item => item[key] == prop[key])
     array.setState((state) => state.filter((item) => item[key] != prop[key]))
+
+    return removed
   }
 
-  const updateItemsByProperty = (prop: Partial<T>, newItem: Partial<T>) => {
+  const updateAll = (prop: Partial<T>, newItem: Partial<T>) => {
     const key = Object.keys(prop)[0]
 
     array.setState((state) => {
@@ -36,14 +39,21 @@ export function useObjectsArray<T extends ArrayItem>(
       return newState
     })
   }
+  const update = (index: number, newItem: T) => {
+    array.setState((state) => {
+      const updatedItem = Object.assign({}, state[index], newItem)
+
+      return [...state.slice(0, index), updatedItem, ...state.slice(index + 1)]
+    })
+  }
 
   return {
     state: array.state,
     push: array.push,
     setState: array.setState,
-    deleteItemByIndex: array.deleteItemByIndex,
-    deleteItemsByProperty,
-    updateItemByIndex: array.updateItemByIndex,
-    updateItemsByProperty
+    remove: array.remove,
+    removeAll,
+    updateAll,
+    update
   }
 }
