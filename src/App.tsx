@@ -22,12 +22,12 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div className="card">
-        {array.state.map((item, index) => <p onClick={() => array.remove(index)}>{item}</p>)}
-      </div>
-      <div className="card">
-        {users.state.map((item, index) => <p onClick={() => users.remove(index)}>{item.name}</p>)}
-      </div>
+      <ul className="card">
+        {array.state.map((item, index) => <li onClick={() => array.remove(index)} key={index}>{item}</li>)}
+      </ul>
+      <ul className="card">
+        {users.state.map((item, index) => <li onClick={() => users.remove(index)} key={index}>{item.name}</li>)}
+      </ul>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
