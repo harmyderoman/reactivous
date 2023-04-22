@@ -13,7 +13,7 @@ export function useObjectsArray<T extends ArrayItem>(
   const deleteItemsByProperty = (prop: Partial<T>) => {
     const key = Object.keys(prop)[0]
 
-    array.setState((state) => state.filter((item: T) => item[key] != prop[key]))
+    array.setState((state) => state.filter((item) => item[key] != prop[key]))
   }
 
   const updateItemsByProperty = (prop: Partial<T>, newItem: Partial<T>) => {
