@@ -1,7 +1,9 @@
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { useArray, useObjectsArray } from './lib/index'
+import { useArray, useObjectsArray } from '../lib/index'
+import ExampleTwo from './exampleTwo'
+import Example from './example'
 
 type User = {
   name: string,
@@ -21,16 +23,9 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <ul className="card">
-        {array.state.map((item, index) => <li onClick={() => array.remove(index)} key={index}>{item}</li>)}
-      </ul>
-      <ul className="card">
-        {users.state.map((item, index) => <li onClick={() => users.remove(index)} key={index}>{item.name}</li>)}
-      </ul>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Examples:</h1>
+      <Example />
+      <ExampleTwo />
     </div>
   )
 }
