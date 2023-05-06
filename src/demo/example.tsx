@@ -1,23 +1,18 @@
-import { useObjectsArray } from 'reactivous';
+import { useArray } from 'reactivous';
 
 function Example() {
-  const fruits = [{ title: 'apple' }, { title: 'banana' }, { title: 'orange' }]
-  const { state,
-     removeAll, 
-     push, 
-     updateAll 
-    } = useObjectsArray(fruits);
+  const { state, remove, push, update } = useArray(['apple', 'banana', 'orange']);
 
   return (
     <div>
-      <ul>
-        {state.map((value, index) => (
-          <li key={index}>{value.title}</li>
+      <ol>
+        {state.map((value,index) => (
+          <li key={index}>{value}</li>
         ))}
-      </ul>
-      <button className='btn' onClick={() => push({ title: 'grape' })}>Add Grape</button>
-      <button className='btn' onClick={() => removeAll({ title: 'grape'})}>Remove All Grapes</button>
-      <button className='btn' onClick={() => updateAll({ title: 'apple' }, { title: 'pineapple' })}>Update Apple</button>
+      </ol>
+      <button className='btn' onClick={() => push('grape')}>Add Grape</button>
+      <button className='btn' onClick={() => remove(1)}>Remove Second Fruit</button>
+      <button className='btn' onClick={() => update(0, 'pineapple')}>Update Apple</button>
     </div>
   );
 }

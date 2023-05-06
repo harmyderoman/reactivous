@@ -2,8 +2,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { useArray, useObjectsArray } from '../lib/index'
-import ExampleTwo from './exampleTwo'
 import Example from './example'
+import ExampleTwo from './exampleTwo'
 
 type User = {
   name: string,
